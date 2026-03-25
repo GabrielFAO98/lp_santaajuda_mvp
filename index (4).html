@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santa Ajuda Cerimonial – Assessoria de Eventos | Franca, SP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --wine:   #6B0F1A;
+      --wine-d: #4A0A12;
+      --wine-l: #8B1A27;
+      --rose:   #E8B4A8;
+      --rose-l: #F0CCBF;
+      --rose-d: #C8907E;
+      --cream:  #FAF5F0;
+      --text:   #2E1015;
+      --muted:  #7A5560;
+      --white:  #FFFFFF;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Utility ── */
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rose-d);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--wine);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-wine {
+      background: var(--wine);
+      color: var(--rose-l);
+      border: 1px solid var(--wine);
+    }
+    .btn-wine:hover {
+      background: var(--wine-d);
+      border-color: var(--wine-d);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--wine);
+      border: 1px solid var(--rose-d);
+    }
+    .btn-outline:hover {
+      background: var(--wine);
+      color: var(--rose-l);
+      border-color: var(--wine);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4vw;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(106, 15, 26, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--rose-l);
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--rose);
+      color: var(--rose);
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--rose);
+      color: var(--wine-d);
+    }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--rose-l);
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--wine-d);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--rose-l);
+      letter-spacing: 0.05em;
+    }
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 4vw;
+      font-size: 1.8rem;
+      color: var(--rose);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--wine-d);
+    }
+    .hero-img-desktop,
+    .hero-img-mobile {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      /* Imagem de noivos real para o Hero */
+      background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1600&q=80');
+      opacity: 0.6;
+      transition: opacity 0.6s;
+    }
+    .hero-img-mobile {
+      display: none;
+      background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(74,10,18,0.92) 0%, rgba(74,10,18,0.35) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 4vw 6vh;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose-l);
+    }
+    .hero-sub {
+      font-size: 0.85rem;
+      color: var(--rose);
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      max-width: 440px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── SOBRE ── */
+    #sobre {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .sobre-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .sobre-img-desktop {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Foto de cerimonialista/detalhe elegante */
+      background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+      min-height: 400px;
+    }
+    .sobre-img-mobile { display: none; }
+
+    .sobre-text {
+      padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream);
+    }
+    .sobre-text .section-title { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1.25rem; }
+    .sobre-text p {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .sobre-stat-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .sobre-stat { text-align: center; }
+    .sobre-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .sobre-stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose-d);
+      margin-top: 0.3rem;
+    }
+
+    /* ── SERVIÇOS ── */
+    #servicos {
+      background: var(--wine);
+      padding: clamp(3rem, 7vw, 7rem) 4vw;
+      text-align: center;
+    }
+    #servicos .section-label { color: var(--rose); }
+    #servicos .section-title { color: var(--rose-l); font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem; }
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .servico-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(232,180,168,0.15);
+      padding: 2.5rem 2rem;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    .servico-card:hover { background: rgba(232,180,168,0.08); }
+    .servico-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .servico-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--rose-l);
+      margin-bottom: 0.6rem;
+    }
+    .servico-card p {
+      font-size: 0.8rem;
+      line-height: 1.75;
+      color: var(--rose);
+      opacity: 0.8;
+    }
+
+
+    /* ── PORTFOLIO ── */
+    #portfolio {
+      padding: clamp(3rem, 7vw, 7rem) 4vw;
+      background: var(--cream);
+    }
+    #portfolio .section-label { text-align: center; }
+    #portfolio .section-title { text-align: center; font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .portfolio-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(74,10,18,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .portfolio-item:hover::after { opacity: 1; }
+    .portfolio-item:hover .portfolio-caption { opacity: 1; transform: translateY(0); }
+
+    /* Imagens de portfólio reais */
+    /* pi1: Noivos no altar */
+.pi1 {
+  grid-column: 1 / 8;
+  grid-row: 1;
+  background: url('https://cdn0.casamentos.com.br/article/5721/3_2/960/jpg/61275-diseo-sin-ttulo-2023-08-02t094639-648.jpeg') center/cover no-repeat;
+  min-height: 360px;
+}
+
+/* pi2: Noivos sorrindo (Campinas) */
+.pi2 {
+  grid-column: 8 / 13;
+  grid-row: 1;
+  background: url('https://storage.alboom.ninja/sites/1132/albuns/432635/fotos-casamento-casal-noivos-regiane-e-fabio-campinas-espaco-quinta-das-brumelias-campinas-sp-fotografo-denis-silveira-fotografia-wedding-photography-182.JPG?t=1656367338') center/cover no-repeat;
+}
+
+/* pi3: Noiva detalhe (Pinterest) */
+.pi3 {
+  grid-column: 1 / 5;
+  grid-row: 2;
+  background: url('https://i.pinimg.com/474x/68/62/33/68623395090b183d8dbb96091a7ab403.jpg') center/cover no-repeat;
+  min-height: 300px;
+}
+
+/* pi4: Noivos abraçados (Unsplash) */
+.pi4 {
+  grid-column: 5 / 9;
+  grid-row: 2;
+  background: url('https://plus.unsplash.com/premium_photo-1661386198461-c57783b28c2f?fm=jpg&q=60&w=1000&auto=format&fit=crop') center/cover no-repeat;
+}
+
+/* pi5: Noivos com flores (Porto Seguro) */
+.pi5 {
+  grid-column: 9 / 13;
+  grid-row: 2;
+  background: url('https://blog.portoseguro.com.br/wordpress/wp-content/uploads/2024/06/Casal-de-noivos-sorrindo-rodeado-de-flores-em-uma-cerimonia-de-casamento-scaled.jpg') center/cover no-repeat;
+}
+
+  @media (max-width: 900px) {
+  /* Deixe apenas as regras de layout. 
+     As imagens serão herdadas automaticamente do código acima. */
+  .portfolio-grid { 
+    grid-template-columns: 1fr 1fr; 
+  }
+  .pi1 { grid-column: 1 / 3; grid-row: 1; min-height: 240px; }
+  .pi2 { grid-column: 1 / 2; grid-row: 2; min-height: 200px; }
+  .pi3 { grid-column: 2 / 3; grid-row: 2; min-height: 200px; }
+  .pi4 { grid-column: 1 / 2; grid-row: 3; min-height: 200px; }
+  .pi5 { grid-column: 2 / 3; grid-row: 3; min-height: 200px; }
+}
+
+
+    .portfolio-caption {
+      position: absolute;
+      bottom: 1.2rem; left: 1.2rem;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.35s;
+    }
+    .portfolio-caption h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+    .portfolio-caption span {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    /* ── DEPOIMENTOS ── */
+    #depoimentos {
+      background: var(--wine-d);
+      padding: clamp(3rem, 7vw, 7rem) 4vw;
+      overflow: hidden;
+    }
+    #depoimentos .section-label { text-align: center; color: var(--rose); }
+    #depoimentos .section-title { text-align: center; color: var(--rose-l); font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem; }
+    .dep-slider {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .dep-track {
+      overflow: hidden;
+    }
+    .dep-cards {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .dep-card {
+      min-width: 100%;
+      padding: 3rem;
+      border: 1px solid rgba(232,180,168,0.15);
+      background: rgba(255,255,255,0.04);
+      text-align: center;
+    }
+    .dep-stars { color: var(--rose); font-size: 1rem; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+    .dep-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose-l);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+    .dep-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+    .dep-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .dep-btn {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(232,180,168,0.3);
+      background: transparent;
+      color: var(--rose);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .dep-btn:hover { background: var(--rose); color: var(--wine-d); }
+    .dep-dots { display: flex; gap: 6px; }
+    .dep-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(232,180,168,0.3);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dep-dot.active { background: var(--rose); }
+
+    /* ── PROCESSO ── */
+    #processo {
+      padding: clamp(3rem, 7vw, 7rem) 4vw;
+      background: var(--cream);
+    }
+    #processo .section-label { text-align: center; }
+    #processo .section-title { text-align: center; font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem; }
+    .processo-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .passo {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--rose-d);
+      position: relative;
+    }
+    .passo-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(139,26,39,0.12);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .passo h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--wine);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .passo p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── GALERIA BANNER (strip) ── */
+    .galeria-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 28vw;
+      max-height: 320px;
+      overflow: hidden;
+    }
+    .gs-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .gs-item:nth-child(1) { background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=500&q=80') center/cover no-repeat; }
+    .gs-item:nth-child(2) { background: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=500&q=80') center/cover no-repeat; }
+    .gs-item:nth-child(3) { background: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&w=500&q=80') center/cover no-repeat; }
+    .gs-item:nth-child(4) { background: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80') center/cover no-repeat; }
+    .gs-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(74,10,18,0.3);
+      transition: opacity 0.3s;
+    }
+    .gs-item:hover::after { opacity: 0; }
+
+    /* ── CONTATO ── */
+    #contato {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+    .contato-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .contato-img-desktop {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    }
+    .contato-img-mobile { display: none; }
+    .contato-form-area {
+      background: var(--wine);
+      padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contato-form-area .section-label { color: var(--rose); }
+    .contato-form-area .section-title { color: var(--rose-l); font-size: clamp(1.8rem, 2.8vw, 2.5rem); margin-bottom: 0.5rem; }
+    .contato-sub {
+      font-size: 0.82rem;
+      color: var(--rose);
+      opacity: 0.75;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: 0.8;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(232,180,168,0.25);
+      color: var(--rose-l);
+      padding: 0.85rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      resize: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(232,180,168,0.4); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--rose); }
+    .form-group select option { background: var(--wine-d); color: var(--rose-l); }
+    .form-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--wine-d);
+      padding: 3rem 4vw 2rem;
+      border-top: 1px solid rgba(232,180,168,0.1);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+    }
+    .footer-brand .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--rose-l);
+      margin-bottom: 0.3rem;
+    }
+    .footer-brand .brand-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: 0.7;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--rose);
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose-d);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      font-size: 0.82rem;
+      color: var(--rose);
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .footer-col ul a:hover { opacity: 1; }
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(232,180,168,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--rose);
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .footer-social a:hover { background: var(--rose); color: var(--wine-d); }
+    .footer-bottom {
+      border-top: 1px solid rgba(232,180,168,0.08);
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--rose);
+      opacity: 0.4;
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 28px; height: 28px; }
+    .wa-pulse {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.5);
+      animation: waPulse 2s infinite;
+    }
+    @keyframes waPulse {
+      0%   { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #sobre { grid-template-columns: 1fr; }
+      .sobre-img-wrap .sobre-img-desktop { display: none; }
+      .sobre-img-mobile {
+        display: block;
+        width: 100%;
+        height: 70vw;
+        background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+      }
+
+      #contato { grid-template-columns: 1fr; }
+      .contato-img-wrap .contato-img-desktop { display: none; }
+      .contato-img-mobile {
+        display: block;
+        width: 100%;
+        height: 60vw;
+        background: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+      }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+    @media (max-width: 640px) {
+      .hero-img-desktop { display: none; }
+      .hero-img-mobile { display: block; }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .dep-card { padding: 2rem 1.25rem; }
+      .wa-float { bottom: 1.4rem; right: 1.4rem; width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
+  <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="#portfolio" onclick="closeMobileMenu()">Portfólio</a>
+  <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
+  <a href="#contato" onclick="closeMobileMenu()">Contato</a>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Santa Ajuda Cerimonial</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5516991356880" target="_blank" class="nav-cta">Fale Conosco</a>
+  <div class="nav-hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img-desktop"></div>
+  <div class="hero-img-mobile"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Assessoria de Eventos · Franca, SP</p>
+    <h1 class="hero-title">Seu dia mais especial,<br><em>planejado com amor.</em></h1>
+    <p class="hero-sub">Da primeira reunião à última dança, cuidamos de cada detalhe para que você viva cada momento com leveza e alegria.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5516991356880" target="_blank" class="btn btn-wine">Iniciar conversa</a>
+      <a href="#portfolio" class="btn btn-outline" style="color:var(--rose-l);border-color:rgba(232,180,168,0.5);">Ver portfólio</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOBRE ── -->
+<section id="sobre">
+  <div class="sobre-img-wrap">
+    <div class="sobre-img-desktop"></div>
+    <div class="sobre-img-mobile"></div>
+  </div>
+  <div class="sobre-text fade-up">
+    <p class="section-label">Quem somos</p>
+    <h2 class="section-title">Cuidado, afeto<br>e muita atenção<br>aos detalhes.</h2>
+    <p>A Santa Ajuda Cerimonial nasceu da paixão de Aline por transformar sonhos em celebrações únicas. Com anos de experiência em Franca e região, criamos casamentos que contam a história real de cada casal.</p>
+    <p>Acreditamos que o seu casamento deve ser vivido — sem preocupações, sem imprevistos — apenas amor, família e alegria.</p>
+    <div class="sobre-stat-row">
+      <div class="sobre-stat">
+        <div class="sobre-stat-num">150<span style="font-size:1.8rem">+</span></div>
+        <div class="sobre-stat-label">Casamentos</div>
+      </div>
+      <div class="sobre-stat">
+        <div class="sobre-stat-num">8<span style="font-size:1.8rem">+</span></div>
+        <div class="sobre-stat-label">Anos de experiência</div>
+      </div>
+      <div class="sobre-stat">
+        <div class="sobre-stat-num">100<span style="font-size:1.4rem">%</span></div>
+        <div class="sobre-stat-label">Satisfação</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVIÇOS ── -->
+<section id="servicos">
+  <p class="section-label">O que fazemos</p>
+  <h2 class="section-title">Assessoria completa<br>para o seu grande dia</h2>
+  <div class="servicos-grid fade-up">
+    <div class="servico-card">
+      <span class="servico-icon">🌸</span>
+      <h3>Assessoria Completa</h3>
+      <p>Acompanhamento do planejamento ao dia do evento, do início ao fim, com total dedicação.</p>
+    </div>
+    <div class="servico-card">
+      <span class="servico-icon">📋</span>
+      <h3>Consultoria Pontual</h3>
+      <p>Orientação estratégica para noivos que precisam de suporte em etapas específicas.</p>
+    </div>
+    <div class="servico-card">
+      <span class="servico-icon">💐</span>
+      <h3>Cerimônias e Festas</h3>
+      <p>Coordenação de cerimônias religiosas, civis e festas de casamento em Franca e região.</p>
+    </div>
+    <div class="servico-card">
+      <span class="servico-icon">✨</span>
+      <h3>Decoração Conceitual</h3>
+      <p>Curadoria de fornecedores e conceito visual para que cada detalhe reflita a identidade do casal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFÓLIO ── -->
+<section id="portfolio">
+  <p class="section-label">Portfólio</p>
+  <h2 class="section-title">Momentos que ficam<br>para sempre</h2>
+  <div class="portfolio-grid fade-up">
+    <div class="portfolio-item pi1">
+      <div class="portfolio-caption">
+        <h4>Camila &amp; Rafael</h4>
+        <span>Casamento · Franca</span>
+      </div>
+    </div>
+    <div class="portfolio-item pi2">
+      <div class="portfolio-caption">
+        <h4>Juliana &amp; Pedro</h4>
+        <span>Civil · Ribeirão Preto</span>
+      </div>
+    </div>
+    <div class="portfolio-item pi3">
+      <div class="portfolio-caption">
+        <h4>Ana &amp; Marcos</h4>
+        <span>Casamento · Franca</span>
+      </div>
+    </div>
+    <div class="portfolio-item pi4">
+      <div class="portfolio-caption">
+        <h4>Beatriz &amp; Lucas</h4>
+        <span>Casamento · Franca</span>
+      </div>
+    </div>
+    <div class="portfolio-item pi5">
+      <div class="portfolio-caption">
+        <h4>Fernanda &amp; Tiago</h4>
+        <span>Elopement · Franca</span>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="https://www.instagram.com/santaajudacerimonial/" target="_blank" class="btn btn-outline">Ver mais no Instagram</a>
+  </div>
+</section>
+
+<!-- ── DEPOIMENTOS ── -->
+<section id="depoimentos">
+  <p class="section-label">Depoimentos</p>
+  <h2 class="section-title">O que dizem<br>nossos casais</h2>
+  <div class="dep-slider fade-up">
+    <div class="dep-track">
+      <div class="dep-cards" id="depCards">
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-text">"A Aline transformou nosso casamento em algo muito além do que sonhamos. Cada detalhe foi cuidado com tanto carinho que pudemos aproveitar cada segundo sem nenhuma preocupação."</p>
+          <p class="dep-name">Camila &amp; Rafael · Casamento 2024</p>
+        </div>
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-text">"Profissionalismo, dedicação e muito amor envolvidos em cada etapa. A Santa Ajuda foi indispensável para realizarmos o casamento dos nossos sonhos em Franca."</p>
+          <p class="dep-name">Juliana &amp; Pedro · Casamento 2023</p>
+        </div>
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-text">"Contratar a Aline foi a melhor decisão que tomamos. Ela entendeu perfeitamente o que queríamos e superou todas as nossas expectativas. Recomendo de olhos fechados!"</p>
+          <p class="dep-name">Ana &amp; Marcos · Casamento 2024</p>
+        </div>
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-text">"Desde o primeiro contato, sentimos que estávamos em boas mãos. A atenção, a organização e o carinho da Aline fizeram toda a diferença no nosso dia especial."</p>
+          <p class="dep-name">Beatriz &amp; Lucas · Casamento 2023</p>
+        </div>
+      </div>
+    </div>
+    <div class="dep-controls">
+      <button class="dep-btn" onclick="slideDepoimento(-1)">&#8592;</button>
+      <div class="dep-dots" id="depDots"></div>
+      <button class="dep-btn" onclick="slideDepoimento(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESSO ── -->
+<section id="processo">
+  <p class="section-label">Como funciona</p>
+  <h2 class="section-title">Do sonho ao altar</h2>
+  <div class="processo-steps fade-up">
+    <div class="passo">
+      <div class="passo-num">01</div>
+      <h3>Primeiro Contato</h3>
+      <p>Nos falamos pelo WhatsApp e agendamos uma reunião para entender tudo sobre o seu sonho.</p>
+    </div>
+    <div class="passo">
+      <div class="passo-num">02</div>
+      <h3>Planejamento</h3>
+      <p>Montamos o cronograma, curadoria de fornecedores e conceito visual do casamento.</p>
+    </div>
+    <div class="passo">
+      <div class="passo-num">03</div>
+      <h3>Acompanhamento</h3>
+      <p>Estamos presentes em cada etapa, desde os preparativos até os últimos ajustes.</p>
+    </div>
+    <div class="passo">
+      <div class="passo-num">04</div>
+      <h3>O Grande Dia</h3>
+      <p>Coordenamos tudo nos bastidores para que vocês vivam cada momento com leveza e alegria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERIA STRIP ── -->
+<div class="galeria-strip">
+  <div class="gs-item"></div>
+  <div class="gs-item"></div>
+  <div class="gs-item"></div>
+  <div class="gs-item"></div>
+</div>
+
+<!-- ── CONTATO ── -->
+<section id="contato">
+  <div class="contato-img-wrap">
+    <div class="contato-img-desktop"></div>
+    <div class="contato-img-mobile"></div>
+  </div>
+  <div class="contato-form-area">
+    <p class="section-label">Entre em contato</p>
+    <h2 class="section-title">Vamos planejar<br>seu casamento?</h2>
+    <p class="contato-sub">Preencha o formulário e entraremos em contato em até 24h — ou chame direto no WhatsApp!</p>
+    <div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Maria" id="f-nome" />
+        </div>
+        <div class="form-group">
+          <label>Nome do(a) noivo(a)</label>
+          <input type="text" placeholder="João" id="f-parceiro" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(16) 99999-9999" id="f-tel" />
+        </div>
+        <div class="form-group">
+          <label>Data prevista</label>
+          <input type="text" placeholder="Mês / Ano" id="f-data" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tipo de serviço</label>
+        <select id="f-servico">
+          <option value="">Selecione...</option>
+          <option>Assessoria Completa</option>
+          <option>Consultoria Pontual</option>
+          <option>Cerimônia e Festa</option>
+          <option>Decoração Conceitual</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensagem (opcional)</label>
+        <textarea rows="3" placeholder="Conte um pouco sobre o casamento dos seus sonhos..." id="f-msg"></textarea>
+      </div>
+      <button class="btn btn-wine form-submit" onclick="enviarWhatsApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar pelo WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">Santa Ajuda Cerimonial</div>
+      <div class="brand-sub">Assessoria de Eventos</div>
+      <p>Realizando sonhos com cuidado, amor e dedicação em Franca e região desde 2016.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/santaajudacerimonial/" target="_blank" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://wa.me/5516991356880" target="_blank" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5516991356880">(16) 99135-6880</a></li>
+        <li><a href="https://www.instagram.com/santaajudacerimonial/" target="_blank">@santaajudacerimonial</a></li>
+        <li><a>Franca, São Paulo – SP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Santa Ajuda Cerimonial · Todos os direitos reservados
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a class="wa-float" href="https://wa.me/5516991356880?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20assessoria%20de%20casamento." target="_blank" title="Fale conosco no WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  /* NAV scroll */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Mobile menu */
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+  /* Depoimentos slider */
+  let depIdx = 0;
+  const depCards = document.getElementById('depCards');
+  const depDotsEl = document.getElementById('depDots');
+  const totalDep = depCards.children.length;
+
+  for (let i = 0; i < totalDep; i++) {
+    const d = document.createElement('div');
+    d.className = 'dep-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goDepoimento(i);
+    depDotsEl.appendChild(d);
+  }
+
+  function goDepoimento(n) {
+    depIdx = (n + totalDep) % totalDep;
+    depCards.style.transform = `translateX(-${depIdx * 100}%)`;
+    document.querySelectorAll('.dep-dot').forEach((d, i) => d.classList.toggle('active', i === depIdx));
+  }
+  function slideDepoimento(dir) { goDepoimento(depIdx + dir); }
+
+  setInterval(() => slideDepoimento(1), 5000);
+
+  /* Fade-up on scroll */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => io.observe(el));
+
+  /* WhatsApp form sender */
+  function enviarWhatsApp() {
+    const nome = document.getElementById('f-nome').value.trim();
+    const parceiro = document.getElementById('f-parceiro').value.trim();
+    const tel = document.getElementById('f-tel').value.trim();
+    const data = document.getElementById('f-data').value.trim();
+    const servico = document.getElementById('f-servico').value;
+    const msg = document.getElementById('f-msg').value.trim();
+
+    if (!nome) { alert('Por favor, informe seu nome.'); return; }
+
+    let texto = `Olá! Sou ${nome}`;
+    if (parceiro) texto += ` e ${parceiro}`;
+    texto += `. Estamos interessados na assessoria da Santa Ajuda Cerimonial!`;
+    if (servico) texto += `\n\n*Serviço:* ${servico}`;
+    if (data) texto += `\n*Data prevista:* ${data}`;
+    if (tel) texto += `\n*Contato:* ${tel}`;
+    if (msg) texto += `\n\n*Mensagem:* ${msg}`;
+
+    const url = `https://wa.me/5516991356880?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>
