@@ -195,15 +195,14 @@
       position: absolute;
       inset: 0;
       background-size: cover;
-      background-position: center;
-      /* Imagem de noivos real para o Hero */
-      background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1600&q=80');
+      background-position: center top;
+      background-image: url('img/hero_img.webp');
       opacity: 0.6;
       transition: opacity 0.6s;
     }
     .hero-img-mobile {
       display: none;
-      background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');
+      background-image: url('img/hero_img.webp');
     }
     .hero-overlay {
       position: absolute;
@@ -564,6 +563,57 @@
       line-height: 1.75;
     }
 
+    /* ── QUEM SOU EU ── */
+    #quem-sou-eu {
+      padding: 6rem 4vw;
+      background: var(--white);
+    }
+    .quem-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quem-img-wrap {
+      position: relative;
+    }
+    .quem-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .quem-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -1rem 1rem 1rem -1rem;
+      border: 1px solid var(--rose-d);
+      z-index: 0;
+    }
+    .quem-img-wrap img { position: relative; z-index: 1; }
+    .quem-text .section-label { margin-bottom: 0.5rem; }
+    .quem-text .section-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin-bottom: 1.75rem;
+    }
+    .quem-text p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+    .quem-text p:last-of-type { margin-bottom: 1.75rem; }
+    @media (max-width: 768px) {
+      .quem-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .quem-img-wrap::before { inset: -0.6rem 0.6rem 0.6rem -0.6rem; }
+    }
+
     /* ── GALERIA BANNER (strip) ── */
     .galeria-strip {
       display: grid;
@@ -807,6 +857,7 @@
   <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
   <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
   <a href="#portfolio" onclick="closeMobileMenu()">Portfólio</a>
+  <a href="#quem-sou-eu" onclick="closeMobileMenu()">Quem sou eu</a>
   <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
   <a href="#contato" onclick="closeMobileMenu()">Contato</a>
 </div>
@@ -1002,6 +1053,27 @@
       <div class="passo-num">04</div>
       <h3>O Grande Dia</h3>
       <p>Coordenamos tudo nos bastidores para que vocês vivam cada momento com leveza e alegria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUEM SOU EU ── -->
+<section id="quem-sou-eu">
+  <div class="quem-inner">
+    <div class="quem-img-wrap fade-up">
+      <img src="img/familia_aline.jpeg" alt="Aline e sua família" />
+    </div>
+    <div class="quem-text fade-up">
+      <p class="section-label">Quem sou eu</p>
+      <h2 class="section-title">Conheça a Aline</h2>
+      <p>Sou Aline, casada com o Rodrigo, mãe da Emanuelly, de 16 anos, e do pequeno Davi, de 1 ano. Somos uma família unida e cheia de amor.</p>
+      <p>Desde muito nova, aprendi sobre trabalho e dedicação. Meu pai tinha uma loja de materiais de construção e eu cresci naquele ambiente — em meio a "cotovelos e flanges" (quem é da área vai entender 😄). Foi ali que comecei minha trajetória na área de vendas, onde atuei por muitos anos.</p>
+      <p>Em 2019, decidi dar um novo passo e iniciei minha graduação em Pedagogia, concluída em 2022. Durante esse período, em 2020, conheci meu esposo Rodrigo. Ficamos noivos rapidamente e começamos a planejar nosso casamento entre 2021 e 2022.</p>
+      <p>Foi nesse momento, vivendo cada detalhe do meu próprio evento, que algo despertou em mim. Ao buscar cerimonialistas e mergulhar na organização do casamento, descobri uma nova paixão: o universo dos eventos.</p>
+      <p>Percebi que, além de vendedora e professora, eu também tinha o dom de organizar, planejar e transformar sonhos em realidade.</p>
+      <p>Decidi me especializar, fui até São Paulo, me capacitei na área e tive a oportunidade de aprender com grandes profissionais, como Isabela Vieira. Hoje, atuo há 5 anos no mercado de eventos, realizando sonhos e vivendo histórias únicas ao lado de cada cliente.</p>
+      <p>E sigo evoluindo: atualmente estou me especializando para oferecer cursos e mentorias para quem deseja iniciar na área de cerimonial.</p>
+      <p>Será um prazer te conhecer! Vamos marcar uma conversa, tomar um café e falar sobre o seu grande dia 💛</p>
     </div>
   </div>
 </section>
