@@ -260,7 +260,7 @@
       height: 100%;
       object-fit: cover;
       /* Foto de cerimonialista/detalhe elegante */
-      background: url('img/aline-noiva-subindo-escadas.jpeg') center center/cover no-repeat;
+      background: url('img/aline-noiva-subindo-escadas.webp') center center/cover no-repeat;
       min-height: 400px;
     }
     .sobre-img-mobile { display: none; }
@@ -281,9 +281,10 @@
     }
     .sobre-stat-row {
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       margin-top: 1.5rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      justify-content: space-between;
     }
     .sobre-stat { text-align: center; }
     .sobre-stat-num {
@@ -301,46 +302,103 @@
       margin-top: 0.3rem;
     }
 
-    /* ── SERVIÇOS ── */
+    /* ── COMO FUNCIONA (timeline) ── */
     #servicos {
       background: var(--wine);
       padding: clamp(3rem, 7vw, 7rem) 4vw;
       text-align: center;
     }
     #servicos .section-label { color: var(--rose); }
-    #servicos .section-title { color: var(--rose-l); font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 3rem; }
-    .servicos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5px;
+    #servicos .section-title { color: var(--rose-l); font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 4rem; }
+    .timeline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
       max-width: 1100px;
       margin: 0 auto;
+      position: relative;
     }
-    .servico-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(232,180,168,0.15);
-      padding: 2.5rem 2rem;
-      text-align: left;
-      transition: background 0.3s;
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0.6rem;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: rgba(232,180,168,0.2);
     }
-    .servico-card:hover { background: rgba(232,180,168,0.08); }
-    .servico-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      display: block;
+    .timeline-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
     }
-    .servico-card h3 {
+    .timeline-dot {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      border: 1px solid var(--rose-d);
+      background: var(--wine);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-dot::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--rose-d);
+    }
+    .timeline-num {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--rose-d);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 400;
       color: var(--rose-l);
       margin-bottom: 0.6rem;
+      line-height: 1.25;
     }
-    .servico-card p {
-      font-size: 0.8rem;
-      line-height: 1.75;
+    .timeline-desc {
+      font-size: 0.78rem;
       color: var(--rose);
-      opacity: 0.8;
+      opacity: 0.75;
+      line-height: 1.75;
+    }
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .timeline::before {
+        top: 0;
+        bottom: 0;
+        left: 0.6rem;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+      .timeline-step {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.5rem;
+        padding: 0 0 2.5rem 0;
+      }
+      .timeline-dot { margin-bottom: 0; margin-top: 0.1rem; }
+      .timeline-step:last-child { padding-bottom: 0; }
     }
 
 
@@ -375,35 +433,34 @@
       transition: opacity 0.35s;
     }
     .portfolio-item:hover::after { opacity: 1; }
-    .portfolio-item:hover .portfolio-caption { opacity: 1; transform: translateY(0); }
 
     /* Imagens de portfólio reais */
 .pi1 {
   grid-column: 1 / 8;
   grid-row: 1;
-  background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (4).jpeg') center top/cover no-repeat;
+  background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (4).webp') center top/cover no-repeat;
   min-height: 360px;
 }
 .pi2 {
   grid-column: 8 / 13;
   grid-row: 1;
-  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (3).jpeg') center/cover no-repeat;
+  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (3).webp') center/cover no-repeat;
 }
 .pi3 {
   grid-column: 1 / 5;
   grid-row: 2;
-  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (7).jpeg') center top/cover no-repeat;
+  background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (2).webp') 35% 40%/220% no-repeat;
   min-height: 300px;
 }
 .pi4 {
   grid-column: 5 / 9;
   grid-row: 2;
-  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (10).jpeg') center top/cover no-repeat;
+  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (10).webp') center top/cover no-repeat;
 }
 .pi5 {
   grid-column: 9 / 13;
   grid-row: 2;
-  background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (4).jpeg') center top/cover no-repeat;
+  background: url('img/WhatsApp Image 2026-03-27 at 08.44.35.webp') center top/cover no-repeat;
 }
 
 @media (max-width: 900px) {
@@ -418,27 +475,6 @@
 .pi4 { grid-column: 1 / 2; grid-row: 3; min-height: 200px; }
 .pi5 { grid-column: 2 / 3; grid-row: 3; min-height: 200px; }
 }
-
-  .portfolio-caption {
-      position: absolute;
-      bottom: 1.2rem; left: 1.2rem;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.35s;
-    }
-    .portfolio-caption h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--white);
-      font-weight: 400;
-    }
-    .portfolio-caption span {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--rose);
-    }
 
     /* ── DEPOIMENTOS ── */
     #depoimentos {
@@ -694,10 +730,10 @@
       overflow: hidden;
       position: relative;
     }
-    .gs-item:nth-child(1) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (6).jpeg') center/cover no-repeat; }
-    .gs-item:nth-child(2) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35.jpeg') center top/cover no-repeat; }
-    .gs-item:nth-child(3) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (8).jpeg') center center/cover no-repeat; }
-    .gs-item:nth-child(4) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (6).jpeg') center 40%/cover no-repeat; }
+    .gs-item:nth-child(1) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (6).webp') center/cover no-repeat; }
+    .gs-item:nth-child(2) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35.webp') center top/cover no-repeat; }
+    .gs-item:nth-child(3) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (8).webp') center center/cover no-repeat; }
+    .gs-item:nth-child(4) { background: url('img/WhatsApp Image 2026-03-27 at 08.44.36 (6).webp') center 40%/cover no-repeat; }
     .gs-item::after {
       content: '';
       position: absolute;
@@ -721,7 +757,7 @@
       width: 100%;
       height: 100%;
       min-height: 400px;
-      background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (1).jpeg') center top/cover no-repeat;
+      background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (1).webp') center top/cover no-repeat;
     }
     .contato-img-mobile { display: none; }
     .contato-form-area {
@@ -890,7 +926,7 @@
         display: block;
         width: 100%;
         height: 70vw;
-        background: url('img/aline-noiva-subindo-escadas.jpeg') center center/cover no-repeat;
+        background: url('img/aline-noiva-subindo-escadas.webp') center center/cover no-repeat;
       }
 
       #contato { grid-template-columns: 1fr; }
@@ -899,7 +935,7 @@
         display: block;
         width: 100%;
         height: 60vw;
-        background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (1).jpeg') center top/cover no-repeat;
+        background: url('img/WhatsApp Image 2026-03-27 at 08.44.35 (1).webp') center top/cover no-repeat;
       }
 
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -925,7 +961,7 @@
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
   <a href="#quem-sou-eu" onclick="closeMobileMenu()">Quem sou eu</a>
-  <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
+  <a href="#servicos" onclick="closeMobileMenu()">Como Funciona</a>
   <a href="#planos" onclick="closeMobileMenu()">Planos</a>
   <a href="#portfolio" onclick="closeMobileMenu()">Portfólio</a>
   <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
@@ -938,7 +974,7 @@
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#quem-sou-eu">Quem sou eu</a></li>
-    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#servicos">Como Funciona</a></li>
     <li><a href="#planos">Planos</a></li>
     <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#depoimentos">Depoimentos</a></li>
@@ -961,7 +997,7 @@
     <h1 class="hero-title">Seu dia mais especial,<br><em>planejado com amor.</em></h1>
     <p class="hero-sub">Da primeira reunião à última dança, cuidamos de cada detalhe para que você viva cada momento com leveza e alegria.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/5516991356880" target="_blank" class="btn btn-wine">Iniciar conversa</a>
+      <a href="https://api.whatsapp.com/send/?phone=5516991356880&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+a+assessoria+de+casamento.&type=phone_number&app_absent=0" target="_blank" class="btn btn-wine">Iniciar conversa</a>
       <!-- <a href="#sobre" class="btn btn-outline" style="color:var(--rose-l);border-color:rgba(232,180,168,0.5);">Conhecer mais</a> -->
     </div>
   </div>
@@ -999,7 +1035,7 @@
 <section id="quem-sou-eu">
   <div class="quem-inner">
     <div class="quem-img-wrap fade-up">
-      <img src="img/familia_aline.jpeg" alt="Aline e sua família" />
+      <img src="img/familia_aline.webp" alt="Aline e sua família" />
     </div>
     <div class="quem-text fade-up">
       <p class="section-label">Quem sou eu</p>
@@ -1016,30 +1052,50 @@
   </div>
 </section>
 
-<!-- ── SERVIÇOS ── -->
+<!-- ── COMO FUNCIONA ── -->
 <section id="servicos">
-  <p class="section-label">O que fazemos</p>
-  <h2 class="section-title">Assessoria completa<br>para o seu grande dia</h2>
-  <div class="servicos-grid fade-up">
-    <div class="servico-card">
-      <span class="servico-icon">💍</span>
-      <h3>Casamentos</h3>
-      <p>Assessoria completa ou parcial para cerimônias religiosas, civis e festas — do planejamento ao encerramento.</p>
+  <p class="section-label">Como funciona</p>
+  <h2 class="section-title">Do primeiro contato<br>ao último abraço</h2>
+  <div class="timeline fade-up">
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div>
+        <p class="timeline-num">01</p>
+        <h3 class="timeline-title">Reunião Inicial</h3>
+        <p class="timeline-desc">Conversamos sobre o seu sonho, alinhamos expectativas e entendemos cada detalhe do que você imaginou.</p>
+      </div>
     </div>
-    <div class="servico-card">
-      <span class="servico-icon">🌸</span>
-      <h3>Festas de 15 Anos</h3>
-      <p>Coordenação e assessoria para debutantes, cuidando de cada detalhe para tornar esse momento inesquecível.</p>
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div>
+        <p class="timeline-num">02</p>
+        <h3 class="timeline-title">Planejamento</h3>
+        <p class="timeline-desc">Definimos budget, cronograma de tarefas e abrimos o grupo VIP no WhatsApp para acompanhamento diário.</p>
+      </div>
     </div>
-    <div class="servico-card">
-      <span class="servico-icon">🥂</span>
-      <h3>Outros Eventos</h3>
-      <p>Bodas, eventos corporativos e celebrações especiais com o mesmo cuidado, organização e dedicação de sempre.</p>
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div>
+        <p class="timeline-num">03</p>
+        <h3 class="timeline-title">Curadoria</h3>
+        <p class="timeline-desc">Indicamos fornecedores de confiança e analisamos orçamentos para cada categoria ao seu lado.</p>
+      </div>
     </div>
-    <div class="servico-card">
-      <span class="servico-icon">✨</span>
-      <h3>Cuidado da Santa Ajuda</h3>
-      <p>Equipe presente desde a montagem até o encerramento — para que você viva cada momento com leveza e alegria.</p>
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div>
+        <p class="timeline-num">04</p>
+        <h3 class="timeline-title">Reta Final</h3>
+        <p class="timeline-desc">Reunião 20 dias antes com todos os fornecedores para alinhar a logística e garantir que nada escape.</p>
+      </div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot"></div>
+      <div>
+        <p class="timeline-num">05</p>
+        <h3 class="timeline-title">Seu Dia</h3>
+        <p class="timeline-desc">Equipe presente da montagem ao encerramento — para que você viva cada momento com leveza e alegria.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1104,36 +1160,11 @@
   <p class="section-label">Portfólio</p>
   <h2 class="section-title">Momentos que ficam<br>para sempre</h2>
   <div class="portfolio-grid fade-up">
-    <div class="portfolio-item pi1">
-      <div class="portfolio-caption">
-        <h4>Camila &amp; Rafael</h4>
-        <span>Casamento · Franca</span>
-      </div>
-    </div>
-    <div class="portfolio-item pi2">
-      <div class="portfolio-caption">
-        <h4>Juliana &amp; Pedro</h4>
-        <span>Civil · Ribeirão Preto</span>
-      </div>
-    </div>
-    <div class="portfolio-item pi3">
-      <div class="portfolio-caption">
-        <h4>Ana &amp; Marcos</h4>
-        <span>Casamento · Franca</span>
-      </div>
-    </div>
-    <div class="portfolio-item pi4">
-      <div class="portfolio-caption">
-        <h4>Beatriz &amp; Lucas</h4>
-        <span>Casamento · Franca</span>
-      </div>
-    </div>
-    <div class="portfolio-item pi5">
-      <div class="portfolio-caption">
-        <h4>Fernanda &amp; Tiago</h4>
-        <span>Elopement · Franca</span>
-      </div>
-    </div>
+    <div class="portfolio-item pi1"></div>
+    <div class="portfolio-item pi2"></div>
+    <div class="portfolio-item pi3"></div>
+    <div class="portfolio-item pi4"></div>
+    <div class="portfolio-item pi5"></div>
   </div>
   <div style="text-align:center;margin-top:2.5rem;">
     <a href="https://www.instagram.com/santaajudacerimonial/" target="_blank" class="btn btn-outline">Ver mais no Instagram</a>
@@ -1243,12 +1274,12 @@
     <div class="footer-brand">
       <div class="brand-name">Santa Ajuda Cerimonial</div>
       <div class="brand-sub">Assessoria de Eventos</div>
-      <p>Realizando sonhos com cuidado, amor e dedicação em Franca e região desde 2016.</p>
+      <p>Realizando sonhos com cuidado, amor e dedicação em Franca e região.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/santaajudacerimonial/" target="_blank" title="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://wa.me/5516991356880" target="_blank" title="WhatsApp">
+        <a href="https://api.whatsapp.com/send/?phone=5516991356880&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+a+assessoria+de+casamento.&type=phone_number&app_absent=0" target="_blank" title="WhatsApp">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
@@ -1258,7 +1289,7 @@
       <ul>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#quem-sou-eu">Quem sou eu</a></li>
-        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#servicos">Como Funciona</a></li>
         <li><a href="#planos">Planos</a></li>
         <li><a href="#portfolio">Portfólio</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
